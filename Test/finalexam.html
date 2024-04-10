@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giang</title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <style>
+        .tuvan {
+            background-color: palevioletred;
+            margin-top: 11%;
+            float: right;
+        }
+        header {
+            background-image: url(./image/website.png);
+            height: 297px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="col-md-12">
+            <header>
+                <div class="tuvan col-md-6 p-4">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label for="chude" class="text-white">Chủ đề</label>
+                            <select id="chude">
+                                <option value="Hoa sinh nhật">Hoa sinh nhật</option>
+                                <option value="Hoa 1">Hoa 1</option>
+                                <option value="Hoa 2">Hoa 2</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="" class="text-white">Mức giá</label>
+                            <select id="mucgia">
+                                <option value="Tất cả">Tất cả</option>
+                                <option value="Mức giá 1">Mức giá 1</option>
+                                <option value="Mức giá 2">Mức giá 2</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <button class="btn btn-warning mt-3 text-white">Tìm kiếm</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <p class="text-white mt-2 ml-2">* Bạn có thể gọi nhanh cho chúng tôi theo số <span class="text-danger">0949770422</span> để đặt hoa theo thiết kế riêng</p>
+                    </div>
+                </div>
+            </header>
+        </div>
+        <div class="col-md-12">
+            <nav class="navbar navbar-expand-sm">
+                <ul class="navbar-nav">
+                    <li class="m-2"><a class="nav-link" href="#">hoakho.com</a></li>
+                    <li class="m-2"><a class="nav-link" href="#">Trang chủ</a></li>
+                    <li class="m-2"><a class="nav-link" href="#">Giới thiệu</a></li>
+                    <li class="m-2"><a class="nav-link" href="#">Hoa tươi</a></li>
+                    <li class="m-2"><a class="nav-link" href="#">Hoa cưới</a></li>
+                    <li class="m-2"><a class="nav-link" href="#">Bộ sưu tập</a></li>
+                    <li class="m-2"><button class="btn btn-danger" onclick="$('#modaldk').modal('show')">Đặt mua</button></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="col-md-12">
+            <div class="modal fade justify-content-center" id="modaldk">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h6>THÔNG TIN ĐẶT HÀNG</h6>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="registerForm">
+                                <div class="row p-1">
+                                    <label for="hoten" class="col-md-5 text-right">Họ tên khách hàng</label>
+                                    <div class="col-md-7">
+                                        <input type="text" id="hoten">
+                                        <p id="errHoTen" class="text-danger"></p>
+                                    </div>
+                                </div>
+                                <div class="row p-1">
+                                    <label for="tele" class="col-md-5 text-right">Điện thoại</label>
+                                    <div class="col-md-7">
+                                        <input type="tel" id="tele">
+                                        <p id="errSDT" class="text-danger"></p>
+                                    </div>
+                                </div>
+                                <div class="row p-1">
+                                    <label for="diachi" class="col-md-5 text-right">Địa chỉ</label>
+                                    <div class="col-md-7">
+                                        <input type="text" id="diachi">
+                                        <p id="errDiaChi" class="text-danger"></p>
+                                    </div>
+                                </div>
+                                <div class="row p-2">
+                                    <label for="sanpham" class="col-md-5 text-right">Chọn sản phẩm</label>
+                                    <div class="col-md-7">
+                                        <select id="sanpham">
+                                            <option value="Ngọt ngào như hoa">Ngọt ngào như hoa</option>
+                                            <option value="Hoa tươi - Hương sắc">Hoa tươi - Hương sắc</option>
+                                            <option value="Thuần khiết">Thuần khiết</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row p-1">
+                                    <label for="donGia" class="col-md-5 text-right" >Đơn giá</label>
+                                    <div class="col-md-7">
+                                        <input type="text" id="donGia" disabled>
+                                        <p id="errDonGia" class="text-danger"></p>
+                                    </div>
+                                </div>
+                                <div class="row p-1">
+                                    <label for="soLuong" class="col-md-5 text-right">Số lượng</label>
+                                    <div class="col-md-7">
+                                        <input type="text" id="soLuong">
+                                        <p id="errSoLuong" class="text-danger"></p>
+                                    </div>
+                                </div>
+                                <div class="row p-1">
+                                    <label for="donGia" class="col-md-5 text-right">Chọn hình thức thanh toán</label>
+                                    <div class="col-md-7">
+                                        <input type="radio" name="phuongthuc" id="tienMat">
+                                        <label for="tienMat" class="mr-5">Thanh toán khi nhận hàng</label>
+                                        <input type="radio" name="phuongthuc" id="onl">
+                                        <label for="onl">Thanh toán online</label>
+                                        <p id="errThanhToan" class="text-danger"></p>
+                                    </div>
+                                </div>
+                                <div class="row p-1">
+                                    <label for="donGia" class="col-md-5 text-right">Thành tiền</label>
+                                    <div class="col-md-7">
+                                        <input type="text" id="thanhTien" disabled>
+                                    </div>
+                                </div>
+                                <div class="modal-footer row">
+                                    <button type="button" class="btn btn-success" onclick="validSubmid()">Đăng ký</button>
+                                    <button type="reset" class="btn btn-danger">Hủy</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <body>
+                <div class="row">
+                    <h1>DANH SÁCH ĐƠN ĐẶT HÀNG</h1>
+                </div>
+                <div class="row">
+                    <table class="table table-hover table-striped">
+                        <thead>
+                            <tr>
+                                <th>STT</th>
+                                <th>Họ tên khách hàng</th>
+                                <th>Điện thoại</th>
+                                <th>Địa chỉ</th>
+                                <th>Tên sản phẩm</th>
+                                <th>Đơn giá</th>
+                                <th>Số lượng</th>
+                                <th>Thành tiền</th>
+                                <th>Phương thức thanh toán</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbl">
+
+                        </tbody>
+                    </table>
+                </div>
+            </body>
+        </div>
+        <div class="col-md-12">
+            <div class="row justify-content-center bg-success text-white">
+                <footer>
+                    <p>Thông tin sinh viên:</p>
+                    <ul type="none">
+                        <li>Họ tên: Huỳnh Thanh Giang</li>
+                        <li>Mã sinh viên: 22716371</li>
+                        <li>Mã lớp: DHKTPM18A</li>
+                    </ul>
+                </footer>
+            </div>
+        </div>
+    </div>
+    <script>
+        let i = 0;
+        function validSubmid(){
+            
+            let uname = document.getElementById("hoten").value;
+            let namePattern = /^[A-Z][a-z]*(\s[A-Z][a-z]*)+$/;
+            if(!namePattern.test(uname)){
+                document.getElementById("errHoTen").innerHTML = "Tên không hợp lệ!";
+                document.getElementById("hoten").focus();
+                return false;
+            } else document.getElementById("errHoTen").innerHTML = "";
+
+            let tele = document.getElementById("tele").value;
+            let telePattern = /^(09|03|08)\d{8}$/;
+            if(!telePattern.test(tele)){
+                document.getElementById("errSDT").innerHTML = "Số điện thoại không hợp lệ";
+                document.getElementById("tele").focus();
+                return false;
+            } else document.getElementById("errSDT").innerHTML = "";
+
+            let diaChi = document.getElementById("diachi").value;
+            if(!diaChi){
+                document.getElementById("errDiaChi").innerHTML = "Địa chỉ không được rỗng";
+                document.getElementById("diachi").focus();
+                return false;
+            } else document.getElementById("errDiaChi").innerHTML = "";
+
+            let soLuong = document.getElementById("soLuong").value;
+            let soLuongPattern = /^[1-9]\d$/;
+            if (!soLuongPattern.test(soLuong) || soLuong < 1 || soLuong > 50) {
+                document.getElementById("errSoLuong").innerHTML = "Số lượng không hợp lệ (phải là số nguyên dương từ 1 đến 50)";
+                document.getElementById("soLuong").focus();
+                return false;
+            } else document.getElementById("errSoLuong").innerHTML = "";
+
+            let tienMat = document.getElementById("tienMat");
+            let onl = document.getElementById("onl");
+            let hinhThuc ="";
+            if(tienMat.checked) {
+                hinhThuc ="Thanh toán khi nhận hàng";
+            } else hinhThuc = "Thanh toán online";
+
+            if (!tienMat.checked && !onl.checked) {
+                document.getElementById("errThanhToan").innerHTML = "Vui lòng chọn hình thức thanh toán";
+                return false;
+            } else document.getElementById("errThanhToan").innerHTML = "";
+            
+            let sanPham = document.getElementById("sanpham").value;
+            let donGia = document.getElementById("donGia").value;
+            let thanhTien = parseFloat(donGia) * parseInt(soLuong);
+            
+            let row = "<tr><td>" + (++i) + "</td><td>" + uname + "</td><td>" + tele + "</td><td>" + diaChi + "</td><td>" + sanPham + "</td><td>" + donGia + "</td><td>" + soLuong + "</td><td>" + thanhTien + "</td><td>" + hinhThuc + "</td></tr>";
+            let mytable = document.getElementById("tbl");
+            let newRow = mytable.insertRow(mytable.rows.length);
+            newRow.innerHTML = row;
+
+            $('#modaldk').modal('hide');
+            document.getElementById("registerForm").reset();
+        }
+
+        document.getElementById("sanpham").onchange = function() {
+            let sanPham = document.getElementById("sanpham").value;
+            let donGia = document.getElementById("donGia");
+            
+            switch(sanPham){
+                case "Ngọt ngào như hoa" :
+                    donGia.value = "350000";
+                    break;
+                case "Hoa tươi - Hương sắc" : 
+                    donGia.value = "500000";
+                    break;
+                case "Thuần khiết" : 
+                    donGia.value = "550000";
+                    break;
+                default : 
+                    donGia.value = "";
+                    break;
+            }
+        }
+
+        document.getElementById("soLuong").oninput = function() {
+            let soLuong = document.getElementById("soLuong").value;
+            let donGia = document.getElementById("donGia").value;
+            let thanhTien = parseFloat(donGia) * parseInt(soLuong);
+            document.getElementById("thanhTien").value = thanhTien;
+        }
+    </script>
+</body>
+</html>

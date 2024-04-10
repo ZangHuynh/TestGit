@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style> 
+div {
+  width: 100px;
+  height: 100px;
+  background: red;
+  transition: width 2s, height 4s, opacity 10s;
+}
+
+div:hover {
+  opacity: 0;
+  width: 300px;
+  height: 300px;
+}
+</style>
+</head>
+<body>
+  <script>
+    let i = 0;
+
+    function validSubmit(){
+
+        let ngoaiTru = document.getElementById("ngoaiTru");
+        let loaiBN = "Nội Trú";
+        if(ngoaiTru.checked){
+            loaiBN = "Ngoại Trú";
+        }
+
+        let code = document.getElementById("maThe").value;
+        let codePattern = /^(QN-|CB-|CD-)[0-9]{4}$/;
+        if(!code){
+            document.getElementById("errCode").innerHTML = "Mã thẻkhông được để rỗng";
+            document.getElementById("maThe").focus();
+            return false;
+        } else if(!codePattern.test(code)){
+                document.getElementById("errCode").innerHTML = "Mã thẻ bảo hiểm phải là QN-XXXX, CB-XXXX, CD-XXXX";
+                document.getElementById("maThe").focus();
+                return false;
+        } else document.getElementById("errCode").innerHTML = "(*)";
+
+        let name = document.getElementById("hoTen").value;
+        let namePattern = /^[A-z][a-z]*(\s[A-z][a-z]*)+$/;
+        if(!name){
+            document.getElementById("errName").innerHTML = "Họ và tên không được để rỗng";
+            document.getElementById("hoTen").focus();
+            return false;
+        } else if(!namePattern.test(name)){
+                document.getElementById("errName").innerHTML = "Họ và tên viết hoa đầu từ và có ít nhất 2 từ";
+                document.getElementById("hoTen").focus();
+                return false;
+        } else document.getElementById("errName").innerHTML = "(*)";
+
+        let age = document.getElementById("tuoi").value;
+        if(!age){
+            document.getElementById("errTuoi").innerHTML = "Tuổi không được để rỗng";
+            document.getElementById("tuoi").focus();
+            return false;
+        } else if(age < 16){
+                document.getElementById("errTuoi").innerHTML = "Tuổi phải trên 16 tuổi";
+                document.getElementById("tuoi").focus();
+                return false;
+        } else document.getElementById("errTuoi").innerHTML = "(*)";
+
+        let phone = document.getElementById("sdt").value;
+        let phonePattern = /^(09|03|08|07)[0-9]{8}$/;
+        if(!phone){
+            document.getElementById("errSDT").innerHTML = "Số điện thoại không được để rỗng";
+            document.getElementById("sdt").focus();
+            return false;
+        } else if(!phonePattern.test(phone)){
+                document.getElementById("errSDT").innerHTML = "Số điện thoại phải bắt đầu bằng 09, 03 , 08, 07 và có 10 chữ số";
+                document.getElementById("sdt").focus();
+                return false;
+        } else document.getElementById("errSDT").innerHTML = "(*)";
+
+        let addr = document.getElementById("diaChi").value;
+        if(!addr){
+            document.getElementById("errAddr").innerHTML = "Địa chỉ không được để rỗng";
+            document.getElementById("diaChi").focus();
+            return false;
+        } else document.getElementById("errAddr").innerHTML = "(*)";
+
+        let yeuCau = document.getElementById("bsYC");
+        let dichVu = document.getElementById("dv");
+        let taiNha = document.getElementById("taiNha");
+        let loaiYC = "";
+        if(yeuCau.checked){
+            loaiYC = "Bác sĩ yêu cầu";
+        } else if(dichVu.checked){
+            loaiYC = "Phòng dịch vụ cao cấp";
+        } else if(taiNha.checked){
+            loaiYC = "Trả kết quả tại nhà";
+        }
+
+        let payRate = document.getElementById("payRate").value;
+
+        let row = "<tr><td>" + (++i) + "</td><td>" + loaiBN + "</td><td>" + code + "</td><td>" + name + "</td><td>" + age + "</td><td>" + phone + "</td><td>" + addr + "</td><td>" + loaiYC + "</td><td>" + payRate + "</td></tr>";
+        let mytable = document.getElementById("tbl");
+        let newRow = mytable.insertRow(mytable.rows.length);
+        newRow.innerHTML = row;
+
+        $('#myModal').modal('hide');
+        document.getElementById("registerForm").reset();
+    }
+
+    document.getElementById("doiTuong").onchange = function(){
+        let ob = document.getElementById("doiTuong").value;
+        let payRate = document.getElementById("payRate");
+
+        switch(ob){
+            case "Học sinh": {
+                payRate.value = "30%";
+                break;
+            }
+            case "Sinh viên": {
+                payRate.value = "40%";
+                break;
+            }
+            case "Cán bộ": {
+                payRate.value = "50%";
+                break;
+            }
+            default : {
+                payRate.value = "100%";
+                break;
+            }
+        }
+    }
+</script>
+<h1>The transition Property</h1>
+
+<p></p>
+
+<div>Hover over the div element below, to see the transition effect:</div>
+
+</body>
+</html>

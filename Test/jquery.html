@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+</head>
+<body>
+	<h1>jquery</h1>
+	<input type="text" name="" id="txt">
+	<input type="button" id="button" value="Alert">
+	<script>
+		$(document).ready(function(){
+			$('#button').click(function(){
+				$('#txt').css("background-color","yellow");
+				alert($('#txt').val());
+			});
+			$("p:odd").css("border","1px sollid red");
+			$("p[class]").css("border","1px sollid red");
+		});
+
+		function hinhLon(x){
+			x.style.height = "300px";
+			x.style.width = "300px";
+		}
+		function hinhNho(x){
+			
+		}
+		
+	</script>
+		<ul id="list1">
+			<li class="a">item 1</li>
+			<li class="a">item 2</li>
+			<li class="b">item 3</li>
+			<li class="b">item 3</li>
+		</ul>
+		<p class="a">this is paragraph 1</p>
+		<p id="para2">this is paragraph 2</p>
+		<p class="b">this is paragraph 3</p>
+		<p>this is paragraph 4</p>
+</body>
+</html>

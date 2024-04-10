@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script language="JavaScript" type="text/JavaScript">
+		var arr = new Array();
+		arr[0]="thu hai";
+		arr[1]="thu ba";
+		arr[2]="thu tu";
+		arr[3]="thu nam";
+		arr[4]="thu sau";
+		for(i=0;i<5;i++)
+		document.write(arr[i] + "<br>");
+		document.write(arr.length + "<br>");
+
+		function changeColor(){
+			var arrcolor = new Array();
+			arrcolor[0] = "#ff99ff";
+			arrcolor[1] = "#ffff99";
+			arrcolor[2] = "#99ffff";
+			arrcolor[3] = "#ff6633";
+			arrcolor[4] = "#990033";
+			var m = Math.round(Math.random()*5);
+			document.bgColor=arrcolor[m];
+			idq = setTimeout("changeColor()",1000);
+		}
+		function stop(){
+			clearTimeout(idq);
+		}
+		function open() {
+			win = window.open('bai1.html','NewWin',toolbar = , status = yes, width = 500,height = 500);
+		}
+		function close() {
+			win.close();
+		}
+	</script>
+</head>
+
+<!--Register-->
+<script>
+	function submitValid() {
+
+		let name = document.getElementById("name");
+		let fnamePattern = /^[A-Z][a-z]*(\s[A-Z][a-z]*)+$/;
+		if(!fnamePattern.test(name.value)){
+			document.getElementById("errName").innerHTML = "Họ và tên có ít nhất 2 từ, viết hoa đầu từ";
+			name.focus();
+			return false;
+		}else document.getElementById("errName").innerHTML = "*";
+
+		let mail = document.getElementById("mail");
+		let mailPattern = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
+		if(!mailPattern.test(mail.value)){
+			document.getElementById("errMail").innerHTML = "Địa chỉ email không đúng định dạng.";
+			mail.focus();
+			return false;
+		}else document.getElementById("errMail").innerHTML = "*";
+
+		let uname = document.getElementById("uname");
+		let namePattern = /^[A-Za-z0-9!@#$%^&*()]{3,16}$/;
+		if (!namePattern.test(uname.value)) {
+			document.getElementById("errUser").innerHTML = "Có ít nhất 3, nhiều nhất 16 ký tự và không có khoảng trắng.";
+			uname.focus();
+			return false;
+		} else document.getElementById("errUser").innerHTML = "*";
+
+		let pass = document.getElementById("pass");
+		let passPattern = /^(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&*!])[A-Za-z\d@#$%^&*!]{8,}$/;
+		if (!passPattern.test(pass.value)) {
+			document.getElementById("errPass").innerHTML = "Mật khẩu có ít nhất 1 chữ số, 1 ký tự in hoa, 1 ký tự đặc biệt.";
+			pass.focus();
+			return false;
+		} else document.getElementById("errPass").innerHTML = "*";
+
+		let apass = document.getElementById("apass");
+		if (apass.value != pass.value) {
+			document.getElementById("errAPass").innerHTML = "Không trùng khớp";
+			apass.focus();
+			return false;
+		} else document.getElementById("errAPass").innerHTML = "*";
+
+		let user = {nameCus: name, email: mail, username: uname.value, password: pass.value };
+		let json = JSON.stringify(user);
+		localStorage.setItem(uname.value, json);
+		
+		window.location.href = "login.html";
+	}
+</script>
+
+<!--Login-->
+<script>
+	function submitValid() {
+
+		let uname = document.getElementById("uname");
+		let namePattern = /^[A-Za-z0-9!@#$%^&*()]{3,16}$/;
+		if (!namePattern.test(uname.value)) {
+			document.getElementById("errUser").innerHTML = "Có ít nhất 3, nhiều nhất 16 ký tự và không có khoảng trắng.";
+			uname.focus();
+			return false;
+		} else document.getElementById("errUser").innerHTML = "*";
+
+		let password = document.getElementById("password");
+		let passPattern = /^(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&*!])[A-Za-z\d@#$%^&*!]{8,}$/;
+		if (!passPattern.test(password.value)) {
+			document.getElementById("errPass").innerHTML = "Mật khẩu có ít nhất 1 chữ số, 1 ký tự in hoa, 1 ký tự đặc biệt.";
+			password.focus();
+			return false;
+		} else document.getElementById("errPass").innerHTML = "*";
+
+		let user = JSON.parse(localStorage.getItem(uname.value));
+		if (user && user.username === uname.value && user.password === password.value) {
+			window.location.href = "index.html";
+		} else {
+			alert("Đăng Nhập Thất Bại");
+		}
+	}                      
+</script>
+
+<body onload="alert('Choose color: ')">
+	<center>
+		<input type="button" value="Change" onclick="changeColor()">
+		<input type="button" value="Stop" onclick="stop()">
+	</center>
+</body>
+</html>
